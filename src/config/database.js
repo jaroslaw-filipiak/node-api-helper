@@ -27,3 +27,5 @@ const connectDB = async () => {
     setTimeout(connectDB, 5000);
   }
 };
+
+module.exports = connectDB;
