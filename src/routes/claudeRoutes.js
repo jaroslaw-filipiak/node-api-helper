@@ -8,9 +8,19 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-router.get('/', cors(corsOptions), async (req, res) => {
-  console.log('get: claude route');
-  res.json({ message: 'Hello from Claude Proxy API' });
+router.get('/test-auth', cors(corsOptions), (req, res) => {
+  // Only show the first few and last few characters of the API key
+  const apiKey = process.env.ANTHROPIC_API_KEY || '';
+  const maskedKey =
+    apiKey.length > 8
+      ? `${apiKey.slice(0, 4)}...${apiKey.slice(-4)}`
+      : 'not found';
+
+  res.json({
+    apiKeyPresent: !!process.env.ANTHROPIC_API_KEY,
+    apiKeyFormat: apiKey.startsWith('sk-ant-api'),
+    apiKeyPreview: maskedKey,
+  });
 });
 
 router.post('/', cors(corsOptions), async (req, res) => {
