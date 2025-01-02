@@ -14,7 +14,7 @@ app.use(express.json());
 // Routes
 app.use('/api/users', userRoutes);
 app.get('/', (req, res) => {
-  res.send('jfilipiak api helper');
+  res.send('jfilipiak api helper, nodeenv: ' + process.env.NODE_ENV);
 });
 
 // Error Handler
