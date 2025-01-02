@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
+    console.log('Connecting to database...');
     const dbURI =
       process.env.NODE_ENV === 'production'
         ? process.env.MONGODB_ATLAS_URI
