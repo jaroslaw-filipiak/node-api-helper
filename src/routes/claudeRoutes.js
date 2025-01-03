@@ -7,6 +7,12 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
+router.get('/', cors(corsOptions), (req, res) => {
+  res.json({
+    message: 'Node helper API routes / claude',
+  });
+});
+
 router.post('/', cors(corsOptions), async (req, res) => {
   console.log('Claude API Request started');
   try {
