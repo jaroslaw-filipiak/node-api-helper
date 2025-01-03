@@ -16,6 +16,11 @@
       "dest": "src/server.js"
     }
   ],
+  "functions": {
+    "api/**": {
+      "maxDuration": 60
+    }
+  },
   "env": {
     "NODE_ENV": "production"
   }
