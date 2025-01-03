@@ -8,9 +8,15 @@ const corsOptions = {
 };
 
 router.post('/', cors(corsOptions), async (req, res) => {
+  console.log('Claude API Request started');
   try {
     console.log('Claude API Request started');
     const { model, messages, max_tokens } = req.body;
+
+    console.log('Claude API Request received:', req.body);
+    console.log('Claude API Request model:', model);
+    console.log('Claude API Request messages:', messages);
+    console.log('Claude API Request max_tokens:', max_tokens);
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -34,6 +40,8 @@ router.post('/', cors(corsOptions), async (req, res) => {
 
     const data = await response.json();
     console.log('Claude API Response received successfully');
+
+    console.log('Claude API Response:', data);
     res.json(data);
   } catch (error) {
     console.error('Claude API Error:', error);
